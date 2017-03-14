@@ -26,6 +26,7 @@
 
     ```
     !connect jdbc:hive2://[host]:10000      # host 为启动服务的主机, 默认端口为 10000
+                                            # 提示符需要输入 host 的用户名和密码, 使用 SSH 登录密码
     !set                                    # 查看服务参数, !set -v 参考更多参数配置
     use default;                            # 使用默认数据库 default
     create database testdb;                 # 创建新数据库, 使用 use 切换数据库
