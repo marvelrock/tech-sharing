@@ -71,7 +71,7 @@
     ```
 
 ## 2. 安装ZooKeeper
-- 下载合适版本的hadoop安装包。并将该压缩包复制到设备“zk125，zk126，zk127”上。
+- 下载合适版本的 zookeeper 安装包。并将该压缩包复制到设备“zk125，zk126，zk127”上。
 - 解压安装包至 `/home/cluster/package/`
 - 在`/opt`下创建软连接 `ln -s /home/cluster/package/zookeeper-3.4.8 zk`
 - 在/opt/zk/conf/zoo.cfg 中配置如下内容
