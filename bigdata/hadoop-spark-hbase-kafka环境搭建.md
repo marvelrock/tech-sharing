@@ -659,17 +659,17 @@
 - 下载合适版本的Kafka（Kafka主要用来向Spark任务提供数据，因此主要考虑对Spark的兼容性，spark user guide 中可以查询到其版本间的对应关系），并将该压缩包复制到设备 “dn21，dn108，dn121，dn122，dn123，dn124，dn203，dn205” 上, 由这几台服务器组成 Kafka 集群.
 - 解压安装包至 `/home/cluster/package/`
 - 在 `/opt`下创建软连接 `ln -s /home/cluster/package/kafka_2.11-0.10.0.1 kafka`
-- 在 /opt/kafka/config/server.properties 中配置如下内容
+- 在 `/opt/kafka/config/server.properties` 中配置如下内容
 
     ```
-    broker.id=0                        #server id,每台设备均不能相同
-    listeners=PLAINTEXT://dn108:9092   # 使用本机的 hostname
-    num.network.threads=8              # 应对大吞吐量需要使用更多的线程
-    num.io.threads=8                   # 应对大吞吐量需要使用更多的线程
-    log.dirs=/path/to/your/kafka-data-log    # 是 Kakfa 的数据日志目录, 最好指向磁盘阵列
-    num.partitions=1                   # 默认值, 可用在创建 topic 的过程中, 使用 --partition 设置新创建的 topic
-    log.retention.hours=168            # 数据默认缓存 7 天, 可用根据你的磁盘容量修改
-    zookeeper.connect=zk125:2181,zk126:2181,zk127:2181   # 指向你的 ZooKeeper 服务器列表
+    broker.id=0                        # server id,每台设备均不能相同
+    listeners=PLAINTEXT://dn108:9092   # 使用本机的 hostname
+    num.network.threads=8              # 应对大吞吐量需要使用更多的线程
+    num.io.threads=8                   # 应对大吞吐量需要使用更多的线程
+    log.dirs=/path/to/your/kafka-data-log    # 是 Kakfa 的数据日志目录, 最好指向磁盘阵列
+    num.partitions=1                   # 默认值, 可用在创建 topic 的过程中, 使用 --partition 设置新创建的 topic
+    log.retention.hours=168            # 数据默认缓存 7 天, 可用根据你的磁盘容量修改
+    zookeeper.connect=zk125:2181,zk126:2181,zk127:2181   # 指向你的 ZooKeeper 服务器列表
     ```
 
 - 启动Kafka:在所有需要启动Kafka的设备上的Kafka目录下使用命令 `./bin/kafka-server-start.sh ./config/server.properties ` 启动Kafka.
